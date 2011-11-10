@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# bl4mytree - demo file
+# cwebb@oeb.harvard.edu
+
+# bl4mytree is a script to show you how to use the comnode routine to add
+# branch lengths to a supertree.  Make sure it is executable, then run it.
+
+echo
+
+echo "    Step 1."
+echo "    tree1 assumed to be the tree with branch lengths:"
+echo "$ cat tree1"
+cat tree1
+echo
+echo "    tree2 assumed to be your supertree without branch lengths:"
+echo "$ cat tree2"
+cat tree2
+echo "    NB: tree1 must 'include' tree2 (in order to get an age for the "
+echo "    root of tree2 - check this below)" 
+echo 
+
+echo "    Match them up with comnode:"
+echo "$ phylocom comnode"
+../phylocom comnode
+../phylocom comnode > matched.tre
+echo
+echo "    Same, but strip into two new files:"
+echo "$ ../phylocom comnode | awk '{if(\$0~\"TREE tree1\") print substr(\$0,14)}' > tree1.matched"
+../phylocom comnode | awk '{if($0~"TREE tree1") print substr($0,14)}' > tree1.matched  # watch out for arguments substitution
+echo "$ cat tree1.matched"
+cat tree1.matched
+echo "$ ../phylocom comnode | awk '{if(\$0~\"TREE tree2\") print substr(\$0,14)}' > tree2.matched"
+../phylocom comnode | awk '{if($0~"TREE tree2") print substr($0,14)}' > tree2.matched  # watch out for arguments substitution
+echo "$ cat tree2.matched   # note that the BLs are bogus, all set to 1.0"
+cat tree2.matched
+echo
+
+echo "    Step 2.  If you are going to rate-smooth the BLs to time-units, in r8s,"
+echo "    this is the time to do it.  You need to include: 'describe plot=node_info'"
+echo "    and 'describe plot=chrono_description' in the r8s block."
+echo "    Then you need to wrestle the output into the same format as an 'ages' file."
+echo
+
+echo "     Step 2 (alt). If your BLs in tree1.matched are already times, then"
+echo "     generate an ages file with:"
+#echo "$ mv ages ages.original"
+#mv ages ages.original
+echo "$ ../phylocom agenode -f tree1.matched"
+../phylocom agenode -f tree1.matched
+echo "$ ../phylocom agenode -f tree1.matched > ages"
+../phylocom agenode -f tree1.matched > ages
+echo 
+
+echo "    Step 3.  Finally, use bladj to adjust the bls in your supertree"
+echo "    to be constrained by the node ages in tree1.  This is now possible"
+echo "    because the matched nodes are named the same:"
+echo "$ ../phylocom bladj -f tree2.matched"
+../phylocom bladj -f tree2.matched
+echo "$ ../phylocom bladj -f tree2.matched > final.new"
+../phylocom bladj -f tree2.matched > final.new
+

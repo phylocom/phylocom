@@ -1,0 +1,136 @@
+#!/bin/gawk -f 
+
+# (c) 2011 Cam Webb
+# Distributed under (open source) BSD 2-clause licence
+
+# fy2new
+# converts a tabular `fy format phylogeny to Newick, parenthetical format
+
+# fy-format = tab-delimited fields
+#   1. nodeID (starting at 0 for root node)
+#   2. parent node nodeID
+#   3. number of daughter nodes
+#   4. comma-delimited list of daughter nodeIDs (optional)
+#   5. depth of node (number of edges from root)
+#   6. branch length to parent node (a float)
+#   7. node name (terminal or interior node)
+
+BEGIN{
+
+  if(ARGC != 2)
+    {
+      print "  Usage: fy2new file.fy";
+      exit;
+    } 
+  
+  FS="\t"; 
+  NoBl = 1;
+}
+
+{
+  NodeNo = $1;
+  up[NodeNo] = $2;
+  noat[NodeNo] = $3;
+  bl[NodeNo] = $6;
+  taxon[NodeNo] = $7;
+
+  if ($6 != "") { NoBl = 0 };
+  if (nnodes < NodeNo) {nnodes = NodeNo};
+}
+
+END{
+
+  if(ARGC != 2) exit ;
+
+  nnodes = nnodes+1;
+  
+  # SetNodePointers
+  
+  for (x = 0; x < nnodes; x++)
+    {
+      ldown[x] = -99;
+      rsister[x] = -99;
+      first[x] = 1;
+    }
+
+  for (x = 0; x < nnodes; x++)
+    {
+      # starting at terms
+      if (noat[x] == 0)
+        {
+          y = x;
+          # while not yet at the root
+          while (y != 0)
+            {
+              # is this the first daughter in new structure?
+              if (ldown[up[y]] == -99) 
+                {
+                  ldown[up[y]] = y;
+                }
+              # if not, find the dangling sister
+              else
+                {
+                  # start at ldown
+                  mark = ldown[up[y]];
+                  # move to node with an empty rsister
+                  while (rsister[mark] != -99)
+                    {
+                      mark = rsister[mark];
+                    }
+                  rsister[mark] = y;
+                }
+                
+              # test for refollowing old routes
+              if (first[up[y]] == 1) {y = up[y]; first[y] = 0;}
+              else break;
+                
+            }
+        }
+    }
+
+  # Recurse through levels
+
+  tmp = "";
+  printf("%s;\n", downPar(0, tmp));
+
+}
+
+function downPar(atn, tmp,           x, which, tmpnext )
+{
+  which = 0;
+
+  if (noat[atn] == 0)
+    {
+      tmp = taxon[atn];
+      if (!NoBL) 
+        {
+          tmp = tmp  ":" bl[atn];
+        }
+    }
+  else
+    {
+      x = ldown[atn];
+      tmp =  "(";
+      tmp = tmp downPar(x, tmpnext[which]);
+    
+      x = rsister[x]; which++;
+
+      while (x != -99)
+        {
+          tmp = tmp  ",";
+          tmp = tmp downPar(x, tmpnext[which]);
+          x = rsister[x]; which++;
+        }
+      tmp = tmp  ")";
+      tmp = tmp  taxon[atn];
+      if (!NoBL) 
+        {
+          if ((atn != 0) || (Droptail == 0))
+            {
+              tmp = tmp  ":" bl[atn];
+            }
+        }
+    }
+  
+  return tmp;
+}

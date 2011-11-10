@@ -17,15 +17,12 @@
 // Steven Kembel, Center for Ecology & Evolutionary Biology, U. Oregon
 //			 skembel@uoregon.edu
 
-// COPYRIGHT
-// Copyright (C) 
-//
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the BSD 2-Clause License
 //
 // http://www.opensource.org/licenses/bsd-license.php
 //
-// Copyright (c) 2009-2011, Campbell Webb, David Ackerly, Steven Kembel
+// Copyright (c) 2003-2011, Campbell Webb, David Ackerly, Steven Kembel
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without

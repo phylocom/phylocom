@@ -70,7 +70,7 @@ phylo New2fy(char filename[50]) {
   Xtree.nnodes = lbrack + comma + 1;
   // Allocate size to structure:      
   Xtree.up = ivector(0, Xtree.nnodes-1);
-  Xtree.down = imatrix(0, Xtree.nnodes-1, 0, comma); // set max poly = comma
+  Xtree.down = imatrix(0, Xtree.nnodes-1, 0, MAXPOLYTOMY); // set max poly = comma
   Xtree.noat = ivector(0, Xtree.nnodes-1);
   Xtree.depth = ivector(0, Xtree.nnodes-1);
   Xtree.bl = vector(0, Xtree.nnodes-1);

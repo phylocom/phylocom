@@ -136,13 +136,13 @@ double **dmatrix(long nrl, long nrh, long ncl, long nch)
 
   /* allocate pointers to rows */
   m=(double **) malloc((size_t)((nrow+NR_END)*sizeof(double*)));
-  if (!m) nrerror("allocation failure 1 in matrix()");
+  if (!m) nrerror("allocation failure 1 in dmatrix()");
   m += NR_END;
   m -= nrl;
 
   /* allocate rows and set pointers to them */
   m[nrl]=(double *) malloc((size_t)((nrow*ncol+NR_END)*sizeof(double)));
-  if (!m[nrl]) nrerror("allocation failure 2 in matrix()");
+  if (!m[nrl]) nrerror("allocation failure 2 in dmatrix()");
   m[nrl] += NR_END;
   m[nrl] -= ncl;
 
@@ -160,14 +160,14 @@ int **imatrix(long nrl, long nrh, long ncl, long nch)
 
   /* allocate pointers to rows */
   m=(int **) malloc((size_t)((nrow+NR_END)*sizeof(int*)));
-  if (!m) nrerror("allocation failure 1 in matrix()");
+  if (!m) nrerror("allocation failure 1 in imatrix()");
   m += NR_END;
   m -= nrl;
 
 
   /* allocate rows and set pointers to them */
   m[nrl]=(int *) malloc((size_t)((nrow*ncol+NR_END)*sizeof(int)));
-  if (!m[nrl]) nrerror("allocation failure 2 in matrix()");
+  if (!m[nrl]) nrerror("allocation failure 2 in imatrix()");
   m[nrl] += NR_END;
   m[nrl] -= ncl;
 

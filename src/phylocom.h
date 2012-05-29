@@ -82,6 +82,7 @@
                       // initialized at one
 #define MAXLEVEL 1.0
 #define MAXTAXONLENGTH 100 // Number of chars for taxon name
+#define MAXPOLYTOMY 1000 // Maximum number of daughters per node
 #define MAXBLLENGTH 15 // Number of chars for BL
 #define MAXPLOTLENGTH 100 // Number of chars for plot name
 #define MAXNOTELENGTH 100

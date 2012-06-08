@@ -167,19 +167,25 @@ int main(int argc, char *argv[])
   next = M.nnodes;
   nexttl = M.ntaxa;
 
-  // see where they match
+  // - Main phylomatic algorithm
+  // -- for each taxon in the `taxa` file
   for (i = 0; i < T.ntx; i++)
     {
+      // --- climb through the levels of nesting from terminal to basal
       for (j = 0; j < T.maxnest; j++)
         {
           if (matched[i] != 1)
             {
               for (k = 0; k < next; k++) // looping through all nodes
                 {
+                  // ---- compare with the taxon name at every node in the 
+                  // ---- megatree
                   if (strcmp(T.str[i][j], P.taxon[k]) == 0)
                     {
                       // printf("MATCH t%d+n%d:p%d %s\n", i, j, k, M.taxon[k]);
-                      // add to P; diff for term and internal matches:
+                      // ----- if matches, add to megatree:
+                      // ------ if terminal matches terminal, join new taxon
+                      // ------ to parent node of matching taxon in megatree
                       // terminal to terminal - perfect
                       if ((j == 0) && (P.noat[k] == 0))
                         {
@@ -196,6 +202,9 @@ int main(int argc, char *argv[])
                           matched[i] = 1; nmatched++;
                         }
                       // interior to terminal
+                      // ------ if interior matches interior, join new node path
+                      // ------ to parent node of matching taxon in megatree
+
                       else if ((j > 0) && (P.noat[k] == 0))
                         {
                           last = k;
@@ -252,24 +261,6 @@ int main(int argc, char *argv[])
         }
     }
   
-  // adjust for non-matches
-  if (nmatched < T.ntx)
-    {
-      fprintf(stderr, "NOTE %d taxa not matched:\n", (T.ntx-nmatched));
-    }
-  P.nnodes = next;
-  P.ntaxa = nexttl;
-
-  // List non matches
-  for (i = 0; i < T.ntx; i++)
-    {
-      if (!matched[i])
-        {
-          fprintf(stderr, "%s\n", T.str[i][0]);
-        }
-    }
-  if (nmatched < T.ntx) fprintf(stderr,"\n");
-
   if (Debug)
     {
       for (i = 0; i < P.nnodes; i++)
@@ -293,6 +284,27 @@ int main(int argc, char *argv[])
   else
     {
       Fy2newRec(Prune(P, keep));
+    }
+
+  
+  // Missing taxa
+  if (nmatched < T.ntx)
+    {
+	  // fprintf(stderr, "\f");
+      // fprintf(stderr, "comment=\"NOTE: %d taxa not matched\"\n", (T.ntx-nmatched));
+	  fprintf(stderr, "NOTE: %d taxa not matched:\n", (T.ntx-nmatched));
+    }
+  P.nnodes = next;
+  P.ntaxa = nexttl;
+
+  // List non matches
+  for (i = 0; i < T.ntx; i++)
+    {
+      if (!matched[i])
+        {
+          // fprintf(stderr, "extra_taxon=%s\n", T.str[i][0]);
+		  fprintf(stderr, "%s\n", T.str[i][0]);
+        }
     }
 
   free_c3d(T.str, 0, T.ntx-1, 0, T.maxnest-1, 0, MAXTAXONLENGTH);

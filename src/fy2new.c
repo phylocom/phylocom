@@ -273,6 +273,8 @@ void Fy2newRec(struct phylo A)
   // printf(">>> %d\n\n", A.nnodes);
   tmp = cvector(0, (A.nnodes * (MAXBLLENGTH + MAXTAXONLENGTH + \
                                 MAXNOTELENGTH + 3)));
+  // NOTE: this is where it's filing for large trees - single vector
+  //       for whole newick is too large
 
   // add ldown, rsister structures
   A = SetNodePointers(A);

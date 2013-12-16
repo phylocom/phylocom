@@ -121,6 +121,7 @@ int main(int argc, char *argv[])
           printf("  -f FILENAME use this as the phylo file\n");
           printf("  -n    label all nodes with default names\n");
           printf("  -h    Help information\n");
+          printf("  -y    Output a tabular representation of phylogeny\n");
           printf("  -l    Convert all chars in taxa file to lowercase\n\n");
           return 1;
         }

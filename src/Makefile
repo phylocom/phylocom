@@ -68,7 +68,7 @@ w32:
 	# Fix lack of random and srandom in W32 
 	sed -i -e 's/random\ *(/rand(/g' w32/*.c
 	# Diffent compiler chain, replace with appropriate
-	sed -i -e 's/gcc/i686-pc-mingw32-gcc/g' w32/Makefile
+	sed -i -e 's/gcc/i486-mingw32-gcc/g' w32/Makefile
 	cd w32 && $(MAKE)
 	cp -f w32/phylocom phylocom.exe
 	cp -f w32/phylomatic phylomatic.exe

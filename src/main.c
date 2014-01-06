@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
   MAKENODENAMES = 0;
   NULLTESTING = 0;
   Droptail = 0;
+  FYOUT = 0;
 
   // initialise functions:
 
@@ -128,6 +129,11 @@ int main(int argc, char *argv[])
 	{
 	  NoBL = 1;
 	}
+
+      if (strcmp(argv[argx], "-y") == 0)
+        {
+          FYOUT = 1;
+        }
 
       //Debug
       if (strcmp(argv[argx], "-d") == 0)

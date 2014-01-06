@@ -95,7 +95,9 @@ void Bladj(phylo Intree)
           //printf("i%d action%d\n",i, action[l]);
         }
     }
-  Fy2newRec(Intree);
+  if (FYOUT) FyOut(Intree) ;
+  else Fy2newRec(Intree);
+  
 }
 
 //void Polytom(phylo Intree)

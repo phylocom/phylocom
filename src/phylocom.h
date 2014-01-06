@@ -165,6 +165,7 @@ void IComDist();
 void IComDistNN();
 void VComDist();
 void VComDistNN();
+void FyOut();
 
 //Comnode
 void Comnode();
@@ -241,6 +242,7 @@ char TraitFile[50]; // default name
 //int UseFy; // switch for using .fy format input
 int NoBL; // switch for ignoring branch lenghts
 int Droptail; // switch for dropping the root tail
+int FYOUT; // switch for outputting as fy format
 
 int RUNS, TRAITS, SWAPS, XVAR, AOTOUT, SWAPMETHOD, RNDPRUNEN, RNDPRUNET, MAKENODENAMES, NULLTESTING;
 long BURNIN;

@@ -10,6 +10,18 @@
 #include "nrutil.h"
 
 
+void FyOut(phylo P)
+{
+  int i;
+  for (i = 0 ; i < P.nnodes; i++)
+    {
+      printf("%d\t%d\t%f\t%s\n",      \
+             i, P.up[i],             \
+             P.bl[i], P.taxon[i]);
+    }
+}  
+
+
 // ----- Node-as-factor--------------------------------------
 
 void NAF(phylo P[], sample S, traits T)
@@ -555,6 +567,7 @@ void PrintWelcome()
   printf("  -p INT    Number of taxa to include in pruned tree [5].\n");
   printf("  -n        Add default internal node names (aot) or\n");
   printf("            enable null model testing (comdist/comdistnt)\n");
+  printf("  -y        Output phylogeny in `fyt` format (selected functions)\n");
   printf("  -e        Suppress output of branch lengths.\n");
   printf("  -a        Use the abundances in the sample file (otherwise just pres/abs).\n");
   printf("  -v        Verbose output of raw MPD/MNTD values (comstruct).\n");

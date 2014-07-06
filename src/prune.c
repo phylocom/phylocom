@@ -399,6 +399,8 @@ int CleanPhy(phylo P)
   //         i, P.up[i], P.ldown[i], P.rsister[i], P.bl[i], P.taxon[i]);
   //  }
 
-  Fy2newRec(P);
+  if (FYOUT) FyOut(P) ;
+  else Fy2newRec(P) ;
+
   return 1;
 }

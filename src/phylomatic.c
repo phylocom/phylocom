@@ -271,21 +271,8 @@ int main(int argc, char *argv[])
 
   // this is it:
 
-  if (FYOUT)
-    {
-      for (i = 0 ; i < P.nnodes; i++)
-        {
-          printf("%d\t%d\t%d\t\t%d\t%f\t%s\n",  \
-                 i, P.up[i], P.noat[i],         \
-                 P.depth[i],                    \
-                 P.bl[i], P.taxon[i]);
-        }
-    }
-  else
-    {
-      Fy2newRec(Prune(P, keep));
-    }
-
+  if (FYOUT) FyOut(Prune(P, keep)) ;
+  else Fy2newRec(Prune(P, keep));
   
   // Missing taxa
   if (nmatched < T.ntx)

@@ -76,7 +76,7 @@
 #define VERSION "4.2"
 #define SVNREV  "SVN $Revision: 251 $"
 
-#define MAXNODES 4000 // Higher than the largest no of nodes in phylo
+#define MAXNODES 40000 // Higher than the largest no of nodes in phylo
 #define MAXTAXA  40000 // Higher than the highest expected code for taxon
 #define MAXRUNS 999   // DDA comment: Changed to 999 and significance counters
                       // initialized at one

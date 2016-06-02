@@ -73,12 +73,12 @@ void free_ivector(int *v, long nl, long nh);
 void free_cvector(char *v, long nl, long nh);
 void free_lvector(unsigned long *v, long nl, long nh);
 void free_dvector(double *v, long nl, long nh);
-void free_matrix(float **m, long nrl, long nrh, long ncl, long nch);
+void free_matrix(double **m, long nrl, long nrh, long ncl, long nch);
 void free_cmatrix(char **m, long nrl, long nrh, long ncl, long nch);
 void free_dmatrix(double **m, long nrl, long nrh, long ncl, long nch);
 void free_imatrix(int **m, long nrl, long nrh, long ncl, long nch);
-void free_submatrix(float **b, long nrl, long nrh, long ncl, long nch);
-void free_convert_matrix(float **b, long nrl, long nrh, long ncl, long nch);
+void free_submatrix(double **b, long nrl, long nrh, long ncl, long nch);
+void free_convert_matrix(double **b, long nrl, long nrh, long ncl, long nch);
 void free_f3tensor(float ***t, long nrl, long nrh, long ncl, long nch,\
                    long ndl, long ndh);
 void free_d3tensor(double ***t, long nrl, long nrh, long ncl, long nch,\

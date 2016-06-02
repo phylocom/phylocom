@@ -76,13 +76,13 @@
 #define VERSION "4.2"
 #define SVNREV  "SVN $Revision: 251 $"
 
-#define MAXNODES 15000 // Higher than the largest no of nodes in phylo
-#define MAXTAXA  13000 // Higher than the highest expected code for taxon
+#define MAXNODES 4000 // Higher than the largest no of nodes in phylo
+#define MAXTAXA  40000 // Higher than the highest expected code for taxon
 #define MAXRUNS 999   // DDA comment: Changed to 999 and significance counters
                       // initialized at one
 #define MAXLEVEL 1.0
 #define MAXTAXONLENGTH 100 // Number of chars for taxon name
-#define MAXPOLYTOMY 1000 // Maximum number of daughters per node
+#define MAXPOLYTOMY 10000 // Maximum number of daughters per node
 #define MAXBLLENGTH 15 // Number of chars for BL
 #define MAXPLOTLENGTH 100 // Number of chars for plot name
 #define MAXNOTELENGTH 100
@@ -283,7 +283,7 @@ typedef struct phylo {
   int termtaxa; // number of terminal taxa
   char **taxalist; //names of terminal taxa - taxalist[0 to termtaxa-1][]
   int *t2n;  //vector of node #s indexed by 0 to termtaxa-1, as taxalist
-  float **dist; // matrix of all node-to-node distances dist[node1][node2]
+  double **dist; // matrix of all node-to-node distances dist[node1][node2]
   int arenotes; // 0 | 1
   char **notes;
   // DA additions

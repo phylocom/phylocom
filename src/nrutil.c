@@ -104,7 +104,7 @@ double *dvector(long nl, long nh)
   return v-nl+NR_END;
 }
 
-double **matrix(long nrl, long nrh, long ncl, long nch)
+float **matrix(long nrl, long nrh, long ncl, long nch)
 /* allocate a float matrix with subscript range m[nrl..nrh][ncl..nch] */
 {
   long i, nrow=nrh-nrl+1,ncol=nch-ncl+1;
@@ -177,7 +177,7 @@ int **imatrix(long nrl, long nrh, long ncl, long nch)
   return m;
 }
 
-double **submatrix(float **a, long oldrl, long oldrh, long oldcl, long oldch,
+float **submatrix(float **a, long oldrl, long oldrh, long oldcl, long oldch,
                   long newrl, long newcl)
 /* point a submatrix [newrl..][newcl..] to a[oldrl..oldrh][oldcl..oldch] */
 {
@@ -197,7 +197,7 @@ double **submatrix(float **a, long oldrl, long oldrh, long oldcl, long oldch,
   return m;
 }
 
-double **convert_matrix(float *a, long nrl, long nrh, long ncl, long nch)
+float **convert_matrix(float *a, long nrl, long nrh, long ncl, long nch)
 /* allocate a float matrix m[nrl..nrh][ncl..nch] that points to the matrix
    declared in the standard C manner as a[nrow][ncol], where nrow=nrh-nrl+1
    and ncol=nch-ncl+1. The routine should be called with the address

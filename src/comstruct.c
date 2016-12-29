@@ -83,8 +83,8 @@ void ComDist(struct phylo P, struct sample S)
 
   int i, j, p, q, comb;
 
-  double totR;
-  double **mdist;
+  float totR;
+  float **mdist;
   int *attach; // "make a pointer to an int"
 
   attach = ivector(0, S.ntaxa-1); // "allocate memory to a array pointed to
@@ -161,7 +161,7 @@ void ComDistNN(struct phylo P, struct sample S)
   float minR = 0.0;
   float rel, totminR;
 
-  double **mdist;
+  float **mdist;
   int *attach; // "make a pointer to an int"
 
   attach = ivector(0, S.ntaxa-1); // "allocate memory to a array pointed to
@@ -237,7 +237,7 @@ void IComDist(struct phylo P, struct sample S)
 {
 
   int i, j, p, q, comb;
-  double totR;
+  float totR;
   //float **mdist;
   int *attach; // "make a pointer to an int"
   // float **dmatrix;
@@ -283,7 +283,7 @@ void IComDistNN(struct phylo P, struct sample S)
 {
 
   int i, j, p, q;
-  double minR, R;
+  float minR, R;
   //float **mdist;
   int *attach; // "make a pointer to an int"
   // float **dmatrix;
@@ -330,7 +330,7 @@ void VComDist(struct phylo P, struct sample S)
 {
 
   int i, j, p, comb;
-  double totR;
+  float totR;
   //float **mdist;
   int *attach; // "make a pointer to an int"
   // float **dmatrix;
@@ -383,7 +383,7 @@ void VComDistNN(struct phylo P, struct sample S)
 {
 
   int i, j, p;
-  double minR, R;
+  float minR, R;
   //float **mdist;
   int *attach; // "make a pointer to an int"
   // float **dmatrix;
@@ -995,7 +995,7 @@ void LttR(struct phylo P, struct sample S)
 
 }
 
-void Sort(double Array[], int Nia)
+void Sort(float Array[], int Nia)
 {
   int i;
   float swap;

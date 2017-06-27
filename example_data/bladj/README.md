@@ -12,7 +12,7 @@
    re-revisited. _American Journal of Botany_
    **97**:1296-1303. <http://dx.doi.org/10.3732/ajb.0900346>
  
-`magallon.ages` and `bell.ages` were prepared by Marcus Gastauer. See:
+`magallon.ages` and `bell.ages` were prepared by Markus Gastauer. See:
 Gastauer, M., & Meira-Neto, J. A. A. 2016. An enhanced calibration of
 a recently released megatree for the analysis of phylogenetic
 diversity. _Brazilian Journal of Biology_

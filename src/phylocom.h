@@ -236,9 +236,9 @@ FILE *Fm;   // pointer to means
 FILE *Fc;   // pointer to traits
 FILE *Fa;   // pointer to age file
 
-char PhyloFile[50]; // default name
-char SampleFile[50]; // default name
-char TraitFile[50]; // default name
+char * PhyloFile; // default name
+char * SampleFile; // default name
+char * TraitFile; // default name
 //int UseFy; // switch for using .fy format input
 int NoBL; // switch for ignoring branch lenghts
 int Droptail; // switch for dropping the root tail

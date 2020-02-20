@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
   HILEVEL = MAXLEVEL;
   //default swap is "samples become random draws from phylogeny"
   SWAPMETHOD = 2;  
-  strcpy(PhyloFile, "phylo");
-  strcpy(SampleFile, "sample");
-  strcpy(TraitFile, "traits");
+  PhyloFile = "phylo";
+  SampleFile = "sample";
+  TraitFile = "traits";
   RNDPRUNEN = 5;
   RNDPRUNET = 3;
   MAKENODENAMES = 0;
@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
       // phylo file
       if (strcmp(argv[argx], "-f") == 0)
 	{
-	  sscanf(argv[argx+1], "%s", PhyloFile);
+	  PhyloFile = argv[argx+1];
 	}
 
       if (strcmp(argv[argx],"-n") == 0)
@@ -114,13 +114,13 @@ int main(int argc, char *argv[])
       // sample file
       if (strcmp(argv[argx], "-s") == 0)
 	{
-	  sscanf(argv[argx+1], "%s", SampleFile);
+	  SampleFile = argv[argx+1];
 	}
 
       // traits file
       if (strcmp(argv[argx], "-t") == 0)
 	{
-	  sscanf(argv[argx+1], "%s", TraitFile);
+	  TraitFile = argv[argx+1];
 	}
 
       // Ignore branch lengths in node calculations and taxon distances (traits)

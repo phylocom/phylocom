@@ -3,7 +3,10 @@
 %\renewcommand{\rmdefault}{ptm}
 %\renewcommand{\sfdefault}{phv} % leaves tt as computermodern
 \usepackage{graphicx}
-\usepackage{html}
+% \usepackage{html}
+\usepackage[colorlinks=true,linkcolor=darkblue,urlcolor=darkblue,citecolor=darkb
+lue]{hyperref} % after multibib
+  \urlstyle{same}
 \usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in,headsep=18pt,
   footskip=36pt, headheight=16pt]{geometry}
 \usepackage{boxedminipage}
@@ -42,10 +45,6 @@
 %  \addtolength\columnsep{4pt}
 %\usepackage{lineno}
 \usepackage{comment}
-%\usepackage{svn}
-%  \SVN $Revision: 252 $
-%  \SVN $Date: 2011-08-25 06:04:51 +0700 (Thu, 25 Aug 2011) $
-% Activated with svn propset svn:keywords "Date Revision" phylocom_manual.tex
 
 %%%% Set version here:
 \newcommand{\phylocomversion}{4.2} 
@@ -77,19 +76,19 @@ Phylomatic and Ecovolve)\\}
 
 {\large Cam Webb\\}
 Arnold Arboretum of Harvard University\\
-\htmladdnormallink{cwebb@oeb.harvard.edu}{mailto:cwebb@oeb.harvard.edu}\\
+\href{mailto:cwebb@oeb.harvard.edu}{cwebb@oeb.harvard.edu}\\
 
 \bigskip \bigskip
 
 {\large David Ackerly\\}
 University of California, Berkeley\\
-\htmladdnormallink{dackerly@berkeley.edu}{mailto:dackerly@berkeley.edu}
+\href{mailto:dackerly@berkeley.edu}{dackerly@berkeley.edu}
 
 \bigskip \bigskip
 
 {\large Steve Kembel\\}
 University of Oregon\\
-\htmladdnormallink{skembel@uoregon.edu}{mailto:skembel@uoregon.edu}
+\href{mailto:skembel@uoregon.edu}{skembel@uoregon.edu}
   }
 \end{center}
 
@@ -146,8 +145,8 @@ that they can easily be used inside other programs and shell-scripts.
    consistency
  \item Added null model testing to \verb|comdist|/ \verb|comdistnt|
    functions
- \item Windows version now compiled with \htmladdnormallink{\sc
-   mingw32}{http://www.mingw.org/}, rather than {\sc djgpp}.  This
+ \item Windows version now compiled with \href{http://www.mingw.org/}{\sc
+   mingw32}, rather than {\sc djgpp}.  This
    should help with some of the memory issues some Windows
    users were experiencing.  A \verb|phylocom.bat| file is also
    included to assist in opening a \verb|CMD.EXE| console window. 
@@ -232,12 +231,12 @@ or this line to your \verb|.tcshrc| file, if you are running the
 
 Windows 32-bit binaries are included in the \texttt{w32}
 directory. These binaries were compiled with
-\htmladdnormallink{\texttt mingw32}{http://www.mingw32.org/} under
+\href{http://www.mingw32.org/}{\texttt mingw32} under
 Linux (see \verb|Makefile|).  The binaries run in the Windows console
 (usually found at: \verb|c:\windows\system32\cmd.exe|); note that this
 shell is no longer the same as {\sc ms-dos}, although most of the
 commands behave as before (see
-\htmladdnormallink{http://commandwindows.com/}{http://commandwindows.com/}
+\href{http://commandwindows.com/}{http://commandwindows.com/}
 for an excellent introduction to the Windows console).
 
 If you need to recompile in Windows, use
@@ -303,9 +302,9 @@ one has access to the internals of the data files in this way, one
 must be extra careful with accuracy of formatting: no extra spaces,
 tabs, etc.  Learning to use a good text editor will greatly help; we
 recommend
-\htmladdnormallink{TextWrangler}{http://www.barebones.com/products/textwrangler/}
+\href{http://www.barebones.com/products/textwrangler/}{TextWrangler}
 for Mac and
-\htmladdnormallink{Notepad-plus}{http://notepad-plus.sourceforge.net/}
+\href{http://notepad-plus.sourceforge.net/}{Notepad-plus}
 for Windows.
 
 {\it Note}: As of version 4.0, {\scshape phylocom} recognizes the
@@ -318,10 +317,10 @@ consistent within each file.
 {\scshape phylocom} reads Newick-format phylogenies directly. See:
 \begin{itemize}
 \item[]
-  \htmladdnormallink{http://evolution.genetics.washington.edu/phylip/newicktree.html}{http://evolution.genetics.washington.edu/phylip/newicktree.html},
+  \href{http://evolution.genetics.washington.edu/phylip/newicktree.html}{http://evolution.genetics.washington.edu/phylip/newicktree.html},
   and
 \item[]
-  \htmladdnormallink{http://evolution.genetics.washington.edu/phylip/newick\_doc.html}{http://evolution.genetics.washington.edu/phylip/newick_doc.html}
+  \href{http://evolution.genetics.washington.edu/phylip/newick_doc.html}{http://evolution.genetics.washington.edu/phylip/newick\_doc.html}
 \end{itemize}
 for definitions of the Newick standard.  The default file name is
 \verb|phylo|, but other phylogeny files can be specified using the
@@ -343,6 +342,8 @@ Please note:
   \item Taxa and interior names must begin with \verb|A-Z| or
     \verb|a-z|, not a number,
   \item Branch lengths will be assumed to be 1.0 if not present,
+  \item Branch lengths {\em must not be in exponential format} (i.e.,
+    N.NNN, not N.NNNe-XX),
   \item Comments are ignored,
   \item The root node should not have a branch length if other branch
     lengths are given,
@@ -364,7 +365,7 @@ However, some programs write by default a translation of the taxon
 names into numbers.  These translated Newick strings need to be
 `un-translated' before using in {\scshape phylocom}.  A simple way to get a
 Newick string out of a {\scshape nexus} file is to open the {\scshape nexus}
-file in \htmladdnormallink{Mesquite}{http://mesquiteproject.org/},
+file in \href{http://mesquiteproject.org/}{Mesquite},
 open a tree window (Taxa\&Trees $\to$ New Tree Window) for the stored
 tree (Stored Trees), click on the `Text' tab, and save the text page
 to a file (File $\to$ Save Window as Text...).  In the saved file,
@@ -435,10 +436,10 @@ tabs. See the example traits file distributed with the program.
 NOTE: Investing in a basic guidebook for {\scshape unix} or {\scshape
   dos}/Windows console will be very worthwhile in the long run.
 Alternatively, the web is full of useful pages, e.g., Google:
-\htmladdnormallink{`introduction to
-  unix'}{http://www.google.com/search?q=introduction+to+unix} or
-\htmladdnormallink{`commandline
-  Windows'}{http://www.google.com/search?q=commandline+Windows}.
+\href{http://www.google.com/search?q=introduction+to+unix}{`introduction to
+  unix'} or
+\href{http://www.google.com/search?q=commandline+Windows}{`commandline
+  Windows'}.
 
 Try this software first with the included example files.  Either i) copy these
 files to the same directory as the executables, or ii) make the
@@ -573,7 +574,7 @@ hierarchical taxonomic classes. {\scshape Phylomatic} includes
 numerous one-daughter nodes, and because most other phylogenetic
 applications do not accept one-daughter nodes, these need to be
 `cleaned out.'  Root `tails' are also allowed by the
-\htmladdnormallink{definition}{http://evolution.genetics.washington.edu/phylip/newick_doc.html},
+\href{http://evolution.genetics.washington.edu/phylip/newick_doc.html}{definition},
 but many other applications choke on them. Run:
 \begin{verbatim}
   $ phylocom cleanphy -f phylomatic_out.new -e > clean.new 
@@ -1084,7 +1085,7 @@ either terminal or internal node names in the megatree.  An example:
 \end{verbatim}
 The last name on each line is the name that will be spliced into the
 returned tree.  Note that current megatrees from the
-\htmladdnormallink{phylomatic2}{http://phylodiversity.net/phylomatic/}
+\href{http://phylodiversity.net/phylomatic/}{phylomatic2}
 project have lowercase internal names, and the \texttt{taxa} file
 should therefore also have lowercase names, unless the \texttt{-l}
 option is used.  Note also that \texttt{phylomatic} will not match a
@@ -1728,11 +1729,11 @@ of researchers in the 60's and 70's on species/genus ratios. David
 Baum suggested adding nearest-phylogenetic-neighbor metrics. Michael
 Donoghue and David Ackerly have both influenced my software ideas
 greatly.  Phylocom development has been supported by grants 0212873
-and 0515520 from the US \htmladdnormallink{NSF}{http://www.nsf.gov/},
-by \htmladdnormallink{The Arnold Arboretum of Harvard
-  University}{http://www.arboretum.harvard.edu/}, and the
-\htmladdnormallink{Yale Institute of Biospheric
-  Studies}{http://www.yale.edu/yibs/}.
+and 0515520 from the US \href{http://www.nsf.gov/}{NSF},
+by \href{http://www.arboretum.harvard.edu/}{The Arnold Arboretum of Harvard
+  University}, and the
+\href{http://www.yale.edu/yibs/}{Yale Institute of Biospheric
+  Studies}.
 
 
 \bigskip \noindent \textit{David}: Thanks to Michael Donoghue for his
@@ -1924,7 +1925,7 @@ nexfile using this command (thanks to Adam Wolf):
 \textit{``Why won't the megatrees (e.g., R20081027.new) open in
   TreeViewX?''} The phylomatic database allows single daughter nodes
 in Newick: ((A,B)C)D which are also allowed by the Newick standard.
-\htmladdnormallink{TreeViewX}{http://darwin.zoology.gla.ac.uk/~rpage/treeviewx/}
+\href{http://darwin.zoology.gla.ac.uk/~rpage/treeviewx/}{TreeViewX}
 can also handle these, but seems not to like it when the files are
 large.  The single daughter nodes can be cleaned out using phylocom,
 e.g.:
@@ -1932,14 +1933,14 @@ e.g.:
   $ phylocom cleanphy -e -f R20081027.new > clean.new
 \end{verbatim}
 The resulting file will open in TreeViewX.  I have found that
-\htmladdnormallink{ATV}{http://www.phylosoft.org/atv/} can open the
+\href{http://www.phylosoft.org/atv/}{ATV} can open the
 files directly.  
 
 Some other programs may also have trouble reading single daughter
 nodes, or the \texttt{:0.0000} branch length of the root node, or even
 any root node branch length at all, although these are all allowed by
-the semi-formal \htmladdnormallink{Newick
-  standard}{http://evolution.genetics.washington.edu/phylip/newick_doc.html}. If
+the semi-formal \href{http://evolution.genetics.washington.edu/phylip/newick_doc.html}{Newick
+  standard}. If
 you have trouble reading a phylocom or phylomatic tree into another
 program, please open the file in a text editor and consider the above
 issues.
